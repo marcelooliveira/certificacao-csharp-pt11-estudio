@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01", "Item01", "{9035D5AF-FFB2-41BC-83DE-D6B868B939AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01-Task Parallel com Parallel.For,PLINQ,Tasks", "Item01-Task Parallel com Parallel.For,PLINQ,Tasks", "{9035D5AF-FFB2-41BC-83DE-D6B868B939AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item02", "Item02", "{770E5841-1C9C-48A8-96BB-ABFA7D64A1FE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item02-Gerar threads usando ThreadPool", "Item02-Gerar threads usando ThreadPool", "{770E5841-1C9C-48A8-96BB-ABFA7D64A1FE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item03", "Item03", "{7EC001CD-D63F-42AC-B6FC-C92C15CC3C03}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item03-Desbloquear a IU", "Item03-Desbloquear a IU", "{7EC001CD-D63F-42AC-B6FC-C92C15CC3C03}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item04", "Item04", "{01C892E6-6B3A-4592-B8A9-41F910857CB1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item04-Usar palavras-chave async e await", "Item04-Usar palavras-chave async e await", "{01C892E6-6B3A-4592-B8A9-41F910857CB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item05", "Item05", "{8E61318F-0C64-4955-BA3D-96AC116C601D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item05-Gerenciar dados usando coleções simultâneas", "Item05-Gerenciar dados usando coleções simultâneas", "{8E61318F-0C64-4955-BA3D-96AC116C601D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item06", "Item06", "{7C436FDE-60B2-4B6E-8AB2-CC91B5C77D41}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item06-Sincronizar recursos", "Item06-Sincronizar recursos", "{7C436FDE-60B2-4B6E-8AB2-CC91B5C77D41}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item07", "Item07", "{C71405D6-90B5-4F01-ACED-A12848FFF0DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item07-Implementar bloqueio", "Item07-Implementar bloqueio", "{C71405D6-90B5-4F01-ACED-A12848FFF0DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item08", "Item08", "{8FCD2554-7441-48B0-92B1-0CCAAEA3B4A2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item08-Cancelar uma tarefa de execução longa", "Item08-Cancelar uma tarefa de execução longa", "{8FCD2554-7441-48B0-92B1-0CCAAEA3B4A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item09", "Item09", "{7B68ACFB-0A03-4FD7-8929-64DF593DD3B2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item09-Implementar métodos thread-safe", "Item09-Implementar métodos thread-safe", "{7B68ACFB-0A03-4FD7-8929-64DF593DD3B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program01", "Program01\Program01.csproj", "{C1A226B0-7574-4520-8503-56EC6F9FC2D6}"
 EndProject
