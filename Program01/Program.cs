@@ -9,24 +9,24 @@ namespace Program01
     {
         static void Main(string[] args)
         {
-            Parallel.Invoke(() => Tarefa1(), () => Tarefa2());
-            Console.WriteLine("Fim do processamento. Tecle [ENTER] para terminar.");
+            Parallel.Invoke(() => CozinharMacarrao(), () => RefogarMolho());
+            Console.WriteLine("Retire do fogo e arrume sobre o macarrão. Bom apetite! Tecle [ENTER] para terminar.");
 
             Console.ReadLine();
         }
 
-        static void Tarefa1()
+        static void CozinharMacarrao()
         {
-            Console.WriteLine("Tarefa 1 iniciando");
-            Thread.Sleep(2000);
-            Console.WriteLine("Tarefa 1 terminando");
+            Console.WriteLine("Cozinhando macarrão...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Macarrão já está cozido!");
         }
 
-        static void Tarefa2()
+        static void RefogarMolho()
         {
-            Console.WriteLine("Task 2 iniciando");
-            Thread.Sleep(1000);
-            Console.WriteLine("Task 2 terminando");
+            Console.WriteLine("Refogando molho...");
+            Thread.Sleep(2000);
+            Console.WriteLine("Molho já está refogado!");
         }
     }
 }
