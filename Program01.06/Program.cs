@@ -11,12 +11,14 @@ namespace Program01._06
     {
         static void Main(string[] args)
         {
-            //Task novaTarefa = new Task(() => DoWork());
+            //Task novaTarefa = new Task(() => ExecutaTrabalho());
             //novaTarefa.Start();
             //novaTarefa.Wait();
 
             Task novaTarefa = Task.Run(() => ExecutaTrabalho());
             novaTarefa.Wait();
+
+            Console.ReadLine();
         }
 
         public static void ExecutaTrabalho()
