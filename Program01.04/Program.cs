@@ -18,17 +18,17 @@ namespace Program01._04
 
         static void Main(string[] args)
         {
-            var items = Enumerable.Range(0, 500).ToArray();
+            var items = Enumerable.Range(0, 100).ToArray();
             ParallelLoopResult result = Parallel.For(0, items.
             Count(), (int i, ParallelLoopState loopState) =>
             {
-                if (i == 200)
+                if (i == 75)
                     loopState.Stop();
 
                 WorkOnItem(items[i]);
             });
             Console.WriteLine("Completado? " + result.IsCompleted);
-            Console.WriteLine("No. de itens: " + result.LowestBreakIteration);
+            Console.WriteLine("No. de itens processados: " + result.LowestBreakIteration);
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
