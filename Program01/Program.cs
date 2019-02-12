@@ -9,24 +9,24 @@ namespace Program01
     {
         static void Main(string[] args)
         {
-            Parallel.Invoke(() => Task1(), () => Task2());
-            Console.WriteLine("Finished processing. Press a key to end.");
+            Parallel.Invoke(() => Tarefa1(), () => Tarefa2());
+            Console.WriteLine("Fim do processamento. Tecle algo para terminar.");
 
             Console.ReadLine();
         }
 
-        static void Task1()
+        static void Tarefa1()
         {
-            Console.WriteLine("Task 1 starting");
+            Console.WriteLine("Tarefa 1 iniciando");
             Thread.Sleep(2000);
-            Console.WriteLine("Task 1 ending");
+            Console.WriteLine("Tarefa 1 terminando");
         }
 
-        static void Task2()
+        static void Tarefa2()
         {
-            Console.WriteLine("Task 2 starting");
+            Console.WriteLine("Task 2 iniciando");
             Thread.Sleep(1000);
-            Console.WriteLine("Task 2 ending");
+            Console.WriteLine("Task 2 terminando");
         }
     }
 }
