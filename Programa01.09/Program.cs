@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,7 @@ namespace Program01._09
         {
             Thread.Sleep(1000);
             Console.WriteLine("Olá");
+            //throw new Exception();
         }
 
         public static void MundoTask()
@@ -35,7 +37,14 @@ namespace Program01._09
 
             Task task = Task.Run(() => OlaTask());
             task.ContinueWith((tarefaAnterior) => MundoTask(), TaskContinuationOptions.OnlyOnRanToCompletion);
-            task.ContinueWith((tarefaAnterior) => ExceptionTask(), TaskContinuationOptions.OnlyOnFaulted);
+            task.ContinueWith((tarefaAnterior) =>
+            { // Get the antecedent's exception information.
+                foreach (var ex in tarefaAnterior.Exception.InnerExceptions)
+                {
+                    if (ex is FileNotFoundException)
+                        Console.WriteLine(ex.Message);
+                }
+            }, TaskContinuationOptions.OnlyOnFaulted);
 
             Console.ReadLine();
         }
