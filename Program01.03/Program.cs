@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Program01._03
+namespace Program01._02
 {
     class Program
     {
@@ -16,18 +17,19 @@ namespace Program01._03
 
         static void Main(string[] args)
         {
-            var items = Enumerable.Range(0, 500).ToArray();
+            Console.WriteLine("Iniciando processamento paralelo");
+            var items = Enumerable.Range(0, 100).ToArray();
             Parallel.For(0, items.Length, i =>
             {
                 WorkOnItem(items[i]);
             });
+
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
-        
             Console.ReadLine();
         }
-
     }
 }
+
 
 
 
