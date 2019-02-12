@@ -59,7 +59,7 @@ namespace Program01
 
             foreach (var pessoa in result)
                 Console.WriteLine(pessoa.Nome);
-            Console.WriteLine("Término do processamento. Tecle algo para terminar.");
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
 
             try
             {

@@ -31,13 +31,13 @@ namespace Program01._09
         {
             //Task tarefa = Task.Run(() => OlaTask());
             //tarefa.ContinueWith((tarefaAnterior) => MundoTask());
-            //Console.WriteLine("Término do processamento. Tecle algo para terminar.");
+            //Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
 
             Task task = Task.Run(() => OlaTask());
             task.ContinueWith((tarefaAnterior) => MundoTask(), TaskContinuationOptions.OnlyOnRanToCompletion);
             task.ContinueWith((tarefaAnterior) => ExceptionTask(), TaskContinuationOptions.OnlyOnFaulted);
 
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }

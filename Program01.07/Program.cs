@@ -25,8 +25,8 @@ namespace Program01._07
             });
 
             Console.WriteLine(tarefa.Result);
-            Console.WriteLine("Término do processamento. Tecle algo para terminar.");
-            Console.ReadKey();
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
+            Console.ReadLine();
         }
     }
 }

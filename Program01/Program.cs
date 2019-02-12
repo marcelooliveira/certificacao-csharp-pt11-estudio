@@ -10,7 +10,7 @@ namespace Program01
         static void Main(string[] args)
         {
             Parallel.Invoke(() => Tarefa1(), () => Tarefa2());
-            Console.WriteLine("Fim do processamento. Tecle algo para terminar.");
+            Console.WriteLine("Fim do processamento. Tecle [ENTER] para terminar.");
 
             Console.ReadLine();
         }

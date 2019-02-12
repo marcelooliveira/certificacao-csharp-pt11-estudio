@@ -21,7 +21,7 @@ namespace Program01._02
             {
                 WorkOnItem(item);
             });
-            Console.WriteLine("Término do processamento. Tecle algo para terminar.");
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
     }

@@ -29,7 +29,7 @@ namespace Program01._04
             });
             Console.WriteLine("Completado? " + result.IsCompleted);
             Console.WriteLine("No. de itens: " + result.LowestBreakIteration);
-            Console.WriteLine("Término do processamento. Tecle algo para terminar.");
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
     }
