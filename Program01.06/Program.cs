@@ -15,9 +15,16 @@ namespace Program01._06
             //novaTarefa.Start();
             //novaTarefa.Wait();
 
-            Task novaTarefa = Task.Run(() => ExecutaTrabalho());
-            novaTarefa.Wait();
+            //Task novaTarefa = Task.Run(() => ExecutaTrabalho());
+            //novaTarefa.Wait();
 
+            Task<int> tarefa = Task.Run(() =>
+            {
+                return CalcularResultado();
+            });
+
+            Console.WriteLine(tarefa.Result);
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
 
@@ -26,6 +33,14 @@ namespace Program01._06
             Console.WriteLine("Trabalho iniciado");
             Thread.Sleep(2000);
             Console.WriteLine("Trabalho terminado");
+        }
+
+        public static int CalcularResultado()
+        {
+            Console.WriteLine("Trabalho iniciado");
+            Thread.Sleep(2000);
+            Console.WriteLine("Trabalho terminado");
+            return 55;
         }
     }
 }
