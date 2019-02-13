@@ -10,24 +10,62 @@ namespace Program01
     {
         static void Main(string[] args)
         {
-            Stopwatch sw = new Stopwatch();
-            Console.WriteLine("Iniciando processamento em série");
-            sw.Start();
             CozinharMacarrao();
             RefogarMolho();
-            sw.Stop();
-            Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
-            Console.WriteLine();
-            sw.Restart();
-            Console.WriteLine("Iniciando processamento em paralelo");
-            Parallel.Invoke(() => CozinharMacarrao(), () => RefogarMolho());
-            sw.Stop();
-            Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
             Console.WriteLine();
 
             Console.WriteLine("Retire do fogo e arrume sobre o macarrão. Bom apetite! Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
+
+        //static void Main(string[] args)
+        //{
+        //    CozinharMacarrao();
+        //    RefogarMolho();
+        //    Console.WriteLine();
+
+        //    Parallel.Invoke(() => CozinharMacarrao(), () => RefogarMolho());
+        //    Console.WriteLine();
+
+        //    Console.WriteLine("Retire do fogo e arrume sobre o macarrão. Bom apetite! Tecle [ENTER] para terminar.");
+        //    Console.ReadLine();
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Iniciando processamento em série");
+        //    CozinharMacarrao();
+        //    RefogarMolho();
+        //    Console.WriteLine();
+
+        //    Console.WriteLine("Iniciando processamento em paralelo");
+        //    Parallel.Invoke(() => CozinharMacarrao(), () => RefogarMolho());
+        //    Console.WriteLine();
+
+        //    Console.WriteLine("Retire do fogo e arrume sobre o macarrão. Bom apetite! Tecle [ENTER] para terminar.");
+        //    Console.ReadLine();
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    Stopwatch sw = new Stopwatch();
+        //    Console.WriteLine("Iniciando processamento em série");
+        //    sw.Start();
+        //    CozinharMacarrao();
+        //    RefogarMolho();
+        //    sw.Stop();
+        //    Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
+        //    Console.WriteLine();
+        //    sw.Restart();
+        //    Console.WriteLine("Iniciando processamento em paralelo");
+        //    Parallel.Invoke(() => CozinharMacarrao(), () => RefogarMolho());
+        //    sw.Stop();
+        //    Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
+        //    Console.WriteLine();
+
+        //    Console.WriteLine("Retire do fogo e arrume sobre o macarrão. Bom apetite! Tecle [ENTER] para terminar.");
+        //    Console.ReadLine();
+        //}
 
         static void CozinharMacarrao()
         {
