@@ -1,38 +1,93 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Program01._04
+namespace Program01
 {
     class Program
     {
+        class Pessoa
+        {
+            public string Nome { get; set; }
+            public string Cidade { get; set; }
+        }
         static void Main(string[] args)
         {
-            var items = Enumerable.Range(0, 100).ToArray();
-            ParallelLoopResult result = Parallel.For(0, items.
-            Count(), (int i, ParallelLoopState loopState) =>
-            {
-                if (i == 75)
-                    loopState.Stop();
+            Pessoa[] pessoas = new Pessoa[] {
+                new Pessoa { Nome = "Alice", Cidade = "Uberaba" },
+                new Pessoa { Nome = "Breno", Cidade = "Aracaju" },
+                new Pessoa { Nome = "Carlos", Cidade ="Londrina" },
+                new Pessoa { Nome = "Daniel", Cidade = "Aracaju" },
+                new Pessoa { Nome = "Eduardo", Cidade = "Aparecida" },
+                new Pessoa { Nome = "Fabio", Cidade = "Uberlândia" },
+                new Pessoa { Nome = "Guilherme", Cidade = "Uberaba" },
+                new Pessoa { Nome = "Henrique", Cidade = "Aracaju" },
+                new Pessoa { Nome = "Isaias", Cidade = "Aracaju" },
+                new Pessoa { Nome = "Tiago", Cidade = "Londrina" }
+            };
 
-                Processar(items[i]);
-            });
-            Console.WriteLine("Completado? " + result.IsCompleted);
-            Console.WriteLine("No. de itens processados: " + result.LowestBreakIteration);
+            //var result = from pessoa in pessoas.AsParallel()
+            //             where pessoa.Cidade == "Aracaju"
+            //             select pessoa;
+
+            //var result = from pessoa in
+            //    pessoas
+            //    .AsParallel()
+            //    .WithDegreeOfParallelism(4)
+            //    .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+            //             where pessoa.Cidade == "Aracaju"
+            //             select pessoa;
+
+            //var result = from pessoa in
+            //                 pessoas.AsParallel().AsOrdered()
+            //             where pessoa.Cidade == "Aracaju"
+            //             select pessoa;
+
+            //var result = (from pessoa in
+            //     pessoas.AsParallel()
+            //              where pessoa.Cidade == "Aracaju"
+            //              orderby (pessoa.Nome)
+            //              select new
+            //              {
+            //                  pessoa.Nome
+            //              }).AsSequential().Take(4);
+
+            //var result = from pessoa in
+            //                pessoas.AsParallel()
+            //             where pessoa.Cidade == "Aracaju"
+            //             select pessoa;
+            //result.ForAll(pessoa => Console.WriteLine(pessoa.Nome));
+
+
+            //foreach (var pessoa in result)
+            //    Console.WriteLine(pessoa.Nome);
+
+            try
+            {
+                var result = from pessoa in
+                                 pessoas.AsParallel()
+                              where VerificaCidade(pessoa.Cidade)
+                              select pessoa;
+
+                result.ForAll(pessoa => Console.WriteLine(pessoa.Nome));
+            }
+            catch (AggregateException e)
+            {
+                Console.WriteLine(e.InnerExceptions.Count + " exceções.");
+            }
+
+
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
 
-        static void Processar(object item)
+        public static bool VerificaCidade(string nome)
         {
-            Console.WriteLine("Começando a trabalhar com: " + item);
-            Thread.Sleep(100);
-            Console.WriteLine("Terminando a trabalhar com: " + item);
+            if (nome== "")
+            {
+                throw new ArgumentException(nome);
+            }
+
+            return nome == "Aracaju";
         }
     }
 }
-
 

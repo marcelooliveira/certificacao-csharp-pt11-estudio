@@ -1,93 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-namespace Program01
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Program01._06
 {
     class Program
     {
-        class Pessoa
-        {
-            public string Nome { get; set; }
-            public string Cidade { get; set; }
-        }
         static void Main(string[] args)
         {
-            Pessoa[] pessoas = new Pessoa[] {
-                new Pessoa { Nome = "Alice", Cidade = "Uberaba" },
-                new Pessoa { Nome = "Breno", Cidade = "Aracaju" },
-                new Pessoa { Nome = "Carlos", Cidade ="Londrina" },
-                new Pessoa { Nome = "Daniel", Cidade = "Aracaju" },
-                new Pessoa { Nome = "Eduardo", Cidade = "Aparecida" },
-                new Pessoa { Nome = "Fabio", Cidade = "Uberlândia" },
-                new Pessoa { Nome = "Guilherme", Cidade = "Uberaba" },
-                new Pessoa { Nome = "Henrique", Cidade = "Aracaju" },
-                new Pessoa { Nome = "Isaias", Cidade = "Aracaju" },
-                new Pessoa { Nome = "Tiago", Cidade = "Londrina" }
-            };
+            //Task novaTarefa = new Task(() => ExecutaTrabalho());
+            //novaTarefa.Start();
+            //novaTarefa.Wait();
 
-            //var result = from pessoa in pessoas.AsParallel()
-            //             where pessoa.Cidade == "Aracaju"
-            //             select pessoa;
+            //Task novaTarefa = Task.Run(() => ExecutaTrabalho());
+            //novaTarefa.Wait();
 
-            //var result = from pessoa in
-            //    pessoas
-            //    .AsParallel()
-            //    .WithDegreeOfParallelism(4)
-            //    .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
-            //             where pessoa.Cidade == "Aracaju"
-            //             select pessoa;
-
-            //var result = from pessoa in
-            //                 pessoas.AsParallel().AsOrdered()
-            //             where pessoa.Cidade == "Aracaju"
-            //             select pessoa;
-
-            //var result = (from pessoa in
-            //     pessoas.AsParallel()
-            //              where pessoa.Cidade == "Aracaju"
-            //              orderby (pessoa.Nome)
-            //              select new
-            //              {
-            //                  pessoa.Nome
-            //              }).AsSequential().Take(4);
-
-            //var result = from pessoa in
-            //                pessoas.AsParallel()
-            //             where pessoa.Cidade == "Aracaju"
-            //             select pessoa;
-            //result.ForAll(pessoa => Console.WriteLine(pessoa.Nome));
-
-
-            //foreach (var pessoa in result)
-            //    Console.WriteLine(pessoa.Nome);
-
-            try
+            Task<int> tarefa = Task.Run(() =>
             {
-                var result = from pessoa in
-                                 pessoas.AsParallel()
-                              where VerificaCidade(pessoa.Cidade)
-                              select pessoa;
+                return CalcularResultado();
+            });
 
-                result.ForAll(pessoa => Console.WriteLine(pessoa.Nome));
-            }
-            catch (AggregateException e)
-            {
-                Console.WriteLine(e.InnerExceptions.Count + " exceções.");
-            }
-
-
+            Console.WriteLine(tarefa.Result);
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
 
-        public static bool VerificaCidade(string nome)
+        public static void ExecutaTrabalho()
         {
-            if (nome== "")
-            {
-                throw new ArgumentException(nome);
-            }
+            Console.WriteLine("Trabalho iniciado");
+            Thread.Sleep(2000);
+            Console.WriteLine("Trabalho terminado");
+        }
 
-            return nome == "Aracaju";
+        public static int CalcularResultado()
+        {
+            Console.WriteLine("Trabalho iniciado");
+            Thread.Sleep(2000);
+            Console.WriteLine("Trabalho terminado");
+            return 55;
         }
     }
 }
-

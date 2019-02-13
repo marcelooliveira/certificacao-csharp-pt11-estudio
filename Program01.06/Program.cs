@@ -5,42 +5,32 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Program01._06
+namespace Program01._08
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Task novaTarefa = new Task(() => ExecutaTrabalho());
-            //novaTarefa.Start();
-            //novaTarefa.Wait();
-
-            //Task novaTarefa = Task.Run(() => ExecutaTrabalho());
-            //novaTarefa.Wait();
-
-            Task<int> tarefa = Task.Run(() =>
+            Task[] Tarefas = new Task[10];
+            for (int i = 0; i < 10; i++)
             {
-                return CalcularResultado();
-            });
+                int numeroTarefa = i; // cria uma cópia local do contador de loop, para que o
+                                // número da tarefa seja passado para a expressão lambda
 
-            Console.WriteLine(tarefa.Result);
+                Tarefas[i] = Task.Run(() => ExecutarTrabalho(numeroTarefa));
+            }
+
+            Task.WaitAll(Tarefas);
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
 
-        public static void ExecutaTrabalho()
+        public static void ExecutarTrabalho(int i)
         {
-            Console.WriteLine("Trabalho iniciado");
-            Thread.Sleep(2000);
-            Console.WriteLine("Trabalho terminado");
-        }
+            Console.WriteLine("Tarefa {0} iniciando", i);
 
-        public static int CalcularResultado()
-        {
-            Console.WriteLine("Trabalho iniciado");
             Thread.Sleep(2000);
-            Console.WriteLine("Trabalho terminado");
-            return 55;
+            Console.WriteLine("Tarefa {0} terminada", 1);
         }
     }
 }
