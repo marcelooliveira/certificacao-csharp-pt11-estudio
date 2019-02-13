@@ -8,19 +8,19 @@ namespace Program01._02
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            var items = Enumerable.Range(0, 100);
-            Console.WriteLine("Iniciando processamento em série");
-            foreach (var item in items)
-            {
-                ProcessarItem(item);
-            }
-            Console.WriteLine();
+        //static void Main(string[] args)
+        //{
+        //    var items = Enumerable.Range(0, 100);
+        //    Console.WriteLine("Iniciando processamento em série");
+        //    foreach (var item in items)
+        //    {
+        //        Processar(item);
+        //    }
+        //    Console.WriteLine();
 
-            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
-            Console.ReadLine();
-        }
+        //    Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
+        //    Console.ReadLine();
+        //}
 
         //static void Main(string[] args)
         //{
@@ -28,14 +28,14 @@ namespace Program01._02
         //    Console.WriteLine("Iniciando processamento em série");
         //    foreach (var item in items)
         //    {
-        //        ProcessarItem(item);
+        //        Processar(item);
         //    }
         //    Console.WriteLine();
 
         //    Console.WriteLine("Iniciando processamento paralelo");
         //    Parallel.ForEach(items, item =>
         //    {
-        //        ProcessarItem(item);
+        //        Processar(item);
         //    });
 
         //    Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
@@ -51,7 +51,7 @@ namespace Program01._02
         //    sw.Start();
         //    foreach(var item in items)
         //    {
-        //        ProcessarItem(item);
+        //        Processar(item);
         //    }
         //    sw.Stop();
         //    Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
@@ -61,7 +61,7 @@ namespace Program01._02
         //    Console.WriteLine("Iniciando processamento paralelo");
         //    Parallel.ForEach(items, item =>
         //    {
-        //        ProcessarItem(item);
+        //        Processar(item);
         //    });
         //    sw.Stop();
         //    Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
@@ -70,7 +70,36 @@ namespace Program01._02
         //    Console.ReadLine();
         //}
 
-        static void ProcessarItem(object item)
+
+        static void Main(string[] args)
+        {
+            var items = Enumerable.Range(0, 100).ToArray();
+            Stopwatch sw = new Stopwatch();
+
+            Console.WriteLine("Iniciando processamento em série");
+            sw.Start();
+            foreach (var item in items)
+            {
+                Processar(item);
+            }
+            sw.Stop();
+            Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
+            Console.WriteLine();
+            sw.Restart();
+
+            Console.WriteLine("Iniciando processamento paralelo");
+            Parallel.For(0, items.Length, i =>
+            {
+                Processar(items[i]);
+            });
+            sw.Stop();
+            Console.WriteLine("Tempo decorrido: {0} segundos.", (sw.Elapsed.TotalMilliseconds / 1000.0));
+
+            Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
+            Console.ReadLine();
+        }
+
+        static void Processar(object item)
         {
             Console.WriteLine("Começando a trabalhar com: " + item);
             Thread.Sleep(100);
