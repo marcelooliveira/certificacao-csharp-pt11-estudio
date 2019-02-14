@@ -13,8 +13,8 @@ namespace Program01._02
             //MUITAS TAREFAS EM PARALELO, COM PARÂMETRO
             //=========================================
             //Tarefa 1: processar 100 itens em série
-            //Tarefa 2: processar 100 itens em paralelo - percorrendo uma coleção
-            //Tarefa 3: processar 100 itens em paralelo - percorrendo uma faixa
+            //Tarefa 2: processar 100 itens em paralelo - percorrendo uma faixa
+            //Tarefa 3: processar 100 itens em paralelo - percorrendo uma coleção
 
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
