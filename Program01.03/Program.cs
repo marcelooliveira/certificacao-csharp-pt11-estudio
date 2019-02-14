@@ -5,23 +5,17 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Program01._04
+namespace Program01._03
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var items = Enumerable.Range(0, 100).ToArray();
-            ParallelLoopResult result = Parallel.For(0, items.
-            Count(), (int i, ParallelLoopState loopState) =>
-            {
-                if (i == 75)
-                    loopState.Stop();
+            //Tarefa 1: Processar uma faixa de 100 itens em paralelo
+            //Tarefa 2: Completou sem interrupção?
+            //Tarefa 3: Interromper quando começar a processar o valor 75
+            //Tarefa 4: Quantos itens foram processados (parcialmente)?
 
-                Processar(items[i]);
-            });
-            Console.WriteLine("Completado? " + result.IsCompleted);
-            Console.WriteLine("No. de itens processados: " + result.LowestBreakIteration);
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
