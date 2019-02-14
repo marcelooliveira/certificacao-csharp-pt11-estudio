@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,11 +14,21 @@ namespace Program01
             //TAREFA 2: Cozinhar e refogar EM PARALELO
             //TAREFA 3: Medir o tempo dos 2 procedimentos
 
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             CozinharMacarrao();
             RefogarMolho();
+            stopwatch.Stop();
+            Console.WriteLine("Tempo decorrido: {0} segundos"
+                , stopwatch.ElapsedMilliseconds / 1000.0);
 
+            stopwatch.Reset();
+            stopwatch.Restart();
             Parallel.Invoke(() => CozinharMacarrao(),
                 () => RefogarMolho());
+            stopwatch.Stop();
+            Console.WriteLine("Tempo decorrido: {0} segundos",
+                stopwatch.ElapsedMilliseconds / 1000.0);
 
             Console.WriteLine(
                 "Retire do fogo e ponha o molho sobre o macarrão. " +
