@@ -16,6 +16,17 @@ namespace Program01._02
             //Tarefa 2: processar 100 itens em paralelo - percorrendo uma faixa
             //Tarefa 3: processar 100 itens em paralelo - percorrendo uma coleção
 
+            Console.WriteLine("Tarefa 1: processar 100 itens em série");
+            for (int i = 0; i < 100; i++)
+            {
+                Processar(i);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Tarefa 2: processar 100 itens em paralelo - percorrendo uma faixa");
+            Parallel.For(0, 100, (i) => Processar(i));
+
+
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
