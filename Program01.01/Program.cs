@@ -22,7 +22,6 @@ namespace Program01
             Console.WriteLine("Tempo decorrido: {0} segundos"
                 , stopwatch.ElapsedMilliseconds / 1000.0);
 
-            stopwatch.Reset();
             stopwatch.Restart();
             Parallel.Invoke(() => CozinharMacarrao(),
                 () => RefogarMolho());
