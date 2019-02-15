@@ -52,6 +52,13 @@ namespace Program01
 
             //Tarefa 1: obter a lista de filmes de Aventura 
 
+            var consulta1 =
+                from f in filmes
+                where f.Genero == "Adventure"
+                select f;
+
+            GeraRelatorio("Tarefa 1: obter a lista de filmes de Aventura", consulta1);
+
             //Tarefa 2: obter a lista de filmes de Aventura, executando em PARALELO
 
             //Tarefa 3: obter a lista de filmes de Aventura, executando em PARALELO com modo de execução default
