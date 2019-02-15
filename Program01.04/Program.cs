@@ -61,11 +61,43 @@ namespace Program01
 
             //Tarefa 2: obter a lista de filmes de Aventura, executando em PARALELO
 
+            var consulta2 =
+            from f in filmes.AsParallel()
+            where f.Genero == "Adventure"
+            select f;
+
+            GeraRelatorio("Tarefa 2: obter a lista de filmes de Aventura, executando em PARALELO", consulta2);
+
             //Tarefa 3: obter a lista de filmes de Aventura, executando em PARALELO com modo de execução default
+
+            var consulta3 =
+            from f in filmes.AsParallel()
+                .WithExecutionMode(ParallelExecutionMode.Default)
+            where f.Genero == "Adventure"
+            select f;
+
+            GeraRelatorio("Tarefa 3: obter a lista de filmes de Aventura, executando em PARALELO com modo de execução default", consulta3);
 
             //Tarefa 4: obter a lista de filmes de Aventura, executando em PARALELO forçando paralelismo
 
+            var consulta4 =
+            from f in filmes.AsParallel()
+                .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+            where f.Genero == "Adventure"
+            select f;
+
+            GeraRelatorio("Tarefa 4: obter a lista de filmes de Aventura, executando em PARALELO forçando paralelismo", consulta4);
+
             //Tarefa 5: obter a lista de filmes de Aventura, executando em PARALELO forçando paralelismo e com grau de paralelismo = 4
+
+            var consulta5 =
+            from f in filmes.AsParallel()
+                .WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+                .WithDegreeOfParallelism(4)
+            where f.Genero == "Adventure"
+            select f;
+
+            GeraRelatorio("Tarefa 5: obter a lista de filmes de Aventura, executando em PARALELO forçando paralelismo e com grau de paralelismo = 4", consulta5);
 
             //Tarefa 6: obter a lista de filmes de Aventura, executando em PARALELO e preservando a ordem
 
