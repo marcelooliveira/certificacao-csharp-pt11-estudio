@@ -100,10 +100,38 @@ namespace Program01
             GeraRelatorio("Tarefa 5: obter a lista de filmes de Aventura, executando em PARALELO forçando paralelismo e com grau de paralelismo = 4", consulta5);
 
             //Tarefa 6: obter a lista de filmes de Aventura, executando em PARALELO e preservando a ordem
+            var consulta6 =
+                from f in filmes
+                    .AsParallel()
+                    .AsOrdered()
+                where f.Genero == "Adventure"
+                select f;
+
+            GeraRelatorio("Tarefa 6: obter a lista de filmes de Aventura, executando em PARALELO e preservando a ordem", consulta6);
+
 
             //Tarefa 7: obter os 4 filmes de Aventura de maior faturamento, executando em PARALELO
+            var consulta7
+                 = (from f in filmes
+                   .AsParallel()
+                   where f.Genero == "Adventure"
+                   orderby f.Faturamento descending
+                   select f).Take(4);
+
+            GeraRelatorio("Tarefa 7: obter os 4 filmes de Aventura de maior faturamento, executando em PARALELO", consulta7);
+
 
             //Tarefa 8: Imprimir somente os títulos dos filmes, de aventura, consultando em PARALELO e usando uma ação em PARALELO
+            var consulta8 =
+                from f in filmes
+                .AsParallel()
+                where f.Genero == "Adventure"
+                select f;
+
+            consulta8.ForAll(filme =>
+            {
+                Console.WriteLine(filme.Titulo);
+            });
 
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
