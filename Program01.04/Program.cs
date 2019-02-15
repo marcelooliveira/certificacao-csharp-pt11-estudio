@@ -50,7 +50,7 @@ namespace Program01
             Console.ReadLine();
         }
 
-        private static void GeraRelatorio(string tituloRelatorio, IEnumerable<Filme> result)
+        private static void GeraRelatorio(string tituloRelatorio, IEnumerable<Filme> resultado)
         {
             Console.WriteLine("Relatório: {0}", tituloRelatorio);
 
@@ -66,7 +66,8 @@ namespace Program01
                     new string('=', 20),
                     new string('=', 20),
                     new string('=', 10));
-            foreach (var item in result)
+
+            foreach (var item in resultado)
             {
                 var lucro = item.Faturamento - item.Orcamento;
                 var lucroPorcentagem = (item.Faturamento - item.Orcamento) / item.Orcamento;
