@@ -59,7 +59,7 @@ namespace Program01
                     "Faturamento",
                     "Orcamento",
                     "Lucro",
-                    "LucroPorcentagem");
+                    "% Lucro");
             Console.WriteLine("{0,-30} {1,20:N2} {2,20:N2} {3,20:N2} {4,10:P}",
                     new string('=', 30),
                     new string('=', 20),
@@ -80,9 +80,6 @@ namespace Program01
             }
             Console.WriteLine();
             Console.WriteLine("FIM DO RELATÓRIO: {0}", tituloRelatorio);
-
-            Console.WriteLine("[Tecle algo para continuar]");
-            Console.ReadLine();
         }
     }
 }
