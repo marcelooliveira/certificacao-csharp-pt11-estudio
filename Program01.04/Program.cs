@@ -30,7 +30,9 @@ namespace Program01
         static void Main(string[] args)
         {
 
-            IEnumerable<Filme> filmes = JsonConvert.DeserializeObject<IEnumerable<Filme>>(File.ReadAllText("filmes.json"));
+            IEnumerable<Filme> filmes = 
+                JsonConvert.DeserializeObject<IEnumerable<Filme>>
+                (File.ReadAllText("filmes.json"));
 
             var consulta =
                 from f in filmes
