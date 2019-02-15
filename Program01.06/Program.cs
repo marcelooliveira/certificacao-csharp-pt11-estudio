@@ -15,7 +15,7 @@ namespace Program01._08
             for (int i = 0; i < 10; i++)
             {
                 int numeroTarefa = i; // cria uma cópia local do contador de loop, para que o
-                                // número da tarefa seja passado para a expressão lambda
+                                      // número da tarefa seja passado para a expressão lambda
 
                 Tarefas[i] = Task.Run(() => ExecutarTrabalho(numeroTarefa));
             }
@@ -29,7 +29,7 @@ namespace Program01._08
         {
             Console.WriteLine("Tarefa {0} iniciando", i);
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             Console.WriteLine("Tarefa {0} terminada", 1);
         }
     }
