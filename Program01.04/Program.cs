@@ -17,6 +17,8 @@ namespace Program01
             public string Distribuidor { get; set; }
             public string Genero { get; set; }
             public string Diretor { get; set; }
+            public decimal Lucro { get; set; }
+            public decimal LucroPorcentagem { get; set; }
 
             public int CompareTo(object obj)
             {
@@ -28,7 +30,23 @@ namespace Program01
         static void Main(string[] args)
         {
 
-            List<Filme> filmes = JsonConvert.DeserializeObject<List<Filme>>(File.ReadAllText("filmes.json"));
+            IEnumerable<Filme> filmes = JsonConvert.DeserializeObject<IEnumerable<Filme>>(File.ReadAllText("filmes.json"));
+
+            var consulta =
+                from f in filmes
+                select new Filme
+                {
+                    Titulo = f.Titulo,
+                    Faturamento = f.Faturamento,
+                    Orcamento = f.Orcamento,
+                    Distribuidor = f.Distribuidor,
+                    Genero = f.Genero,
+                    Diretor = f.Diretor,
+                    Lucro = f.Faturamento - f.Orcamento,
+                    LucroPorcentagem = (f.Faturamento - f.Orcamento) / f.Orcamento
+                };
+
+            filmes = consulta;
 
             //Tarefa 1: obter a lista de filmes de Aventura 
 
@@ -69,15 +87,12 @@ namespace Program01
 
             foreach (var item in resultado)
             {
-                var lucro = item.Faturamento - item.Orcamento;
-                var lucroPorcentagem = (item.Faturamento - item.Orcamento) / item.Orcamento;
-
                 Console.WriteLine("{0,-30} {1,20:N2} {2,20:N2} {3,20:N2} {4,10:P}",
                     item.Titulo,
                     item.Faturamento,
                     item.Orcamento,
-                    lucro,
-                    lucroPorcentagem);
+                    item.Lucro,
+                    item.LucroPorcentagem);
             }
             Console.WriteLine();
             Console.WriteLine("FIM DO RELATÓRIO: {0}", tituloRelatorio);
