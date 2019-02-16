@@ -1,13 +1,221 @@
-﻿using System;
+﻿//Gerar threads usando ThreadPool
+using System;
+using System.Threading;
 
 namespace Program02
 {
-    //Gerar threads usando ThreadPool
     class Program
     {
-        static void Main(string[] args)     
-        {
-            Console.ReadLine();
-        }
+        //static void ThreadHello()
+        //{
+        //    Console.WriteLine("Hello from the thread");
+        //    Thread.Sleep(2000);
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    Thread thread = new Thread(ThreadHello);
+        //    thread.Start();
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    ThreadStart ts = new ThreadStart(ThreadHello);
+        //    Thread thread = new Thread(ts);
+        //    thread.Start();
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    Thread thread = new Thread(() =>
+        //    {
+        //        Console.WriteLine("Hello from the thread");
+        //        Thread.Sleep(1000);
+        //    });
+        //    thread.Start();
+        //    Console.WriteLine("Press a key to end.");
+        //    Console.ReadKey();
+        //}
+
+        //static void WorkOnData(object data)
+        //{
+        //    Console.WriteLine("Working on: {0}", data);
+        //    Thread.Sleep(1000);
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    ParameterizedThreadStart ps = new ParameterizedThreadStart(WorkOnData);
+        //    Thread thread = new Thread(ps);
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    Thread thread = new Thread(() =>
+        //    {
+        //        Console.WriteLine("Hello from the thread");
+        //        Thread.Sleep(1000);
+        //    });
+        //    thread.Start();
+        //    Console.WriteLine("Press a key to end.");
+        //    Console.ReadKey();
+        //}
+
+
+        //static void WorkOnData(object data)
+        //{
+        //    Console.WriteLine("Working on: {0}", data);
+        //    Thread.Sleep(1000);
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    ParameterizedThreadStart ps = new ParameterizedThreadStart(WorkOnData);
+        //    Thread thread = new Thread(ps);
+        //    thread.Start(99);
+        //}
+
+
+
+
+        //static void Main(string[] args)
+        //{
+        //    Thread thread = new Thread((data) =>
+        //    {
+        //        WorkOnData(data);
+        //    });
+        //    thread.Start(99);
+        //}
+
+
+        //static void Main(string[] args)
+        //{
+        //    Thread tickThread = new Thread(() =>
+        //    {
+        //        while (true)
+        //        {
+        //            Console.WriteLine("Tick");
+        //            Thread.Sleep(1000);
+        //        }
+        //    });
+        //    tickThread.Start();
+        //    Console.WriteLine("Press a key to stop the clock");
+        //    Console.ReadKey();
+        //    tickThread.Abort();
+        //    Console.WriteLine("Press a key to exit");
+        //    Console.ReadKey();
+        //}
+
+
+
+
+        //static bool tickRunning; // flag variable
+        //static void Main(string[] args)
+        //{
+        //    tickRunning = true;
+        //    Thread tickThread = new Thread(() =>
+        //    {
+        //        while (tickRunning)
+        //        {
+        //            Console.WriteLine("Tick");
+        //            Thread.Sleep(1000);
+        //        }
+        //    });
+        //    tickThread.Start();
+        //    Console.WriteLine("Press a key to stop the clock");
+        //    Console.ReadKey();
+        //    tickRunning = false;
+        //    Console.WriteLine("Press a key to exit");
+        //    Console.ReadKey();
+        //}
+
+
+        //static void Main(string[] args)
+        //{
+        //    Thread threadToWaitFor = new Thread(() =>
+        //    {
+        //        Console.WriteLine("Thread starting");
+        //        Thread.Sleep(2000);
+        //        Console.WriteLine("Thread done");
+        //    });
+        //    threadToWaitFor.Start();
+        //    Console.WriteLine("Joining thread");
+        //    threadToWaitFor.Join();
+        //    Console.WriteLine("Press a key to exit");
+        //    Console.ReadKey();
+        //}
+
+
+
+
+
+
+        //public static ThreadLocal<Random> RandomGenerator =
+        //new ThreadLocal<Random>(() =>
+        //{
+        //    return new Random(2);
+        //});
+
+        //static void Main(string[] args)
+        //{
+        //    Thread t1 = new Thread(() =>
+        //    {
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            Console.WriteLine("t1: {0}", RandomGenerator.Value.Next(10));
+        //            Thread.Sleep(500);
+        //        }
+        //    });
+        //    Thread t2 = new Thread(() =>
+        //    {
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            Console.WriteLine("t2: {0}", RandomGenerator.Value.Next(10));
+        //            Thread.Sleep(500);
+        //        }
+        //    });
+        //    t1.Start();
+        //    t2.Start();
+        //    Console.ReadKey();
+        //}
+
+
+
+        //static void DisplayThread(Thread t)
+        //{
+        //    Console.WriteLine("Name: {0}", t.Name);
+        //    Console.WriteLine("Culture: {0}", t.CurrentCulture);
+        //    Console.WriteLine("Priority: {0}", t.Priority);
+        //    Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
+        //    Console.WriteLine("IsBackground?: {0}", t.IsBackground);
+        //    Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
+        //}
+        //static void Main(string[] args)
+        //{
+        //    Thread.CurrentThread.Name = "Main method";
+        //    DisplayThread(Thread.CurrentThread);
+        //}
+
+
+
+
+
+        //static void DoWork(object state)
+        //{
+        //    Console.WriteLine("Doing work: {0}", state);
+        //    Thread.Sleep(500);
+        //    Console.WriteLine("Work finished: {0}", state);
+        //}
+
+        //static void Main(string[] args)
+        //{
+        //    for (int i = 0; i < 50; i++)
+        //    {
+        //        int stateNumber = i;
+        //        ThreadPool.QueueUserWorkItem(state =>
+        //        DoWork(stateNumber));
+        //    }
+        //    Console.ReadKey();
+        //}
     }
 }
