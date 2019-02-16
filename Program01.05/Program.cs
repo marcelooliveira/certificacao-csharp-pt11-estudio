@@ -5,42 +5,45 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Program01._06
+namespace Program01._05
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Task novaTarefa = new Task(() => ExecutaTrabalho());
-            //novaTarefa.Start();
-            //novaTarefa.Wait();
+            Task tarefa1 = new Task(() => ExecutaTrabalho(1));
+            tarefa1.Start();
+            tarefa1.Wait();
 
-            //Task novaTarefa = Task.Run(() => ExecutaTrabalho());
-            //novaTarefa.Wait();
+            Task tarefa2 = Task.Run(() => ExecutaTrabalho(2));
+            tarefa2.Wait();
 
-            Task<int> tarefa = Task.Run(() =>
+            Task<int> tarefa3 = Task.Run(() =>
             {
-                return CalcularResultado();
+                return CalcularResultado(2, 3);
             });
 
-            Console.WriteLine(tarefa.Result);
+            Console.WriteLine("O resultado é: {0}", tarefa3.Result);
+
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
 
-        public static void ExecutaTrabalho()
+        public static void ExecutaTrabalho(int item)
         {
-            Console.WriteLine("Trabalho iniciado");
+            Console.WriteLine("Trabalho iniciado: {0}", item);
             Thread.Sleep(2000);
-            Console.WriteLine("Trabalho terminado");
+            Console.WriteLine("Trabalho terminado: {0}", item);
+            Console.WriteLine();
         }
 
-        public static int CalcularResultado()
+        public static int CalcularResultado(int numero1, int numero2)
         {
             Console.WriteLine("Trabalho iniciado");
             Thread.Sleep(2000);
             Console.WriteLine("Trabalho terminado");
-            return 55;
+            Console.WriteLine();
+            return numero1 + numero2;
         }
     }
 }
