@@ -27,7 +27,29 @@ namespace Program02
             Thread thread3 = new Thread(ps);
             thread3.Start(123);
 
+            //4. Interrompendo um relógio
+
+
+            //5. Aguardando uma thread
+
+
+            //6. Informações sobre a thread
+
+            
+            //7. Usando Thread Pool
+
+
             Console.ReadLine();
+        }
+
+        private static void ExibeThread(Thread t)
+        {
+            Console.WriteLine("Name: {0}", t.Name);
+            Console.WriteLine("Culture: {0}", t.CurrentCulture);
+            Console.WriteLine("Priority: {0}", t.Priority);
+            Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
+            Console.WriteLine("IsBackground?: {0}", t.IsBackground);
+            Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
         }
 
         static void Executar()
