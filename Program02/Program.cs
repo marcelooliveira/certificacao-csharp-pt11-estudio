@@ -6,105 +6,70 @@ namespace Program02
 {
     class Program
     {
-        //static void ThreadHello()
+        //Criando uma Thread
+        //static void Ola()
         //{
-        //    Console.WriteLine("Hello from the thread");
+        //    Console.WriteLine("Olá, eu sou uma thread!");
         //    Thread.Sleep(2000);
         //}
 
         //static void Main(string[] args)
         //{
-        //    Thread thread = new Thread(ThreadHello);
+        //    Thread thread = new Thread(Ola);
         //    thread.Start();
         //}
 
-        //static void Main(string[] args)
-        //{
-        //    ThreadStart ts = new ThreadStart(ThreadHello);
-        //    Thread thread = new Thread(ts);
-        //    thread.Start();
-        //}
 
+
+
+        //expressão lambda
         //static void Main(string[] args)
         //{
         //    Thread thread = new Thread(() =>
         //    {
-        //        Console.WriteLine("Hello from the thread");
+        //        Console.WriteLine("Olá, eu sou uma thread!");
         //        Thread.Sleep(1000);
         //    });
         //    thread.Start();
-        //    Console.WriteLine("Press a key to end.");
-        //    Console.ReadKey();
+        //    Console.ReadLine();
         //}
 
-        //static void WorkOnData(object data)
+
+
+        //Passando parâmetros para Threads
+        //static void Executar(object data)
         //{
-        //    Console.WriteLine("Working on: {0}", data);
+        //    Console.WriteLine("Dados: {0}", data);
         //    Thread.Sleep(1000);
         //}
 
+        //thread parametrizada
         //static void Main(string[] args)
         //{
-        //    ParameterizedThreadStart ps = new ParameterizedThreadStart(WorkOnData);
+        //    ParameterizedThreadStart ps = 
+        //        new ParameterizedThreadStart(Executar);
         //    Thread thread = new Thread(ps);
-        //}
-
-        //static void Main(string[] args)
-        //{
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        Console.WriteLine("Hello from the thread");
-        //        Thread.Sleep(1000);
-        //    });
-        //    thread.Start();
-        //    Console.WriteLine("Press a key to end.");
-        //    Console.ReadKey();
-        //}
-
-
-        //static void WorkOnData(object data)
-        //{
-        //    Console.WriteLine("Working on: {0}", data);
-        //    Thread.Sleep(1000);
-        //}
-
-        //static void Main(string[] args)
-        //{
-        //    ParameterizedThreadStart ps = new ParameterizedThreadStart(WorkOnData);
-        //    Thread thread = new Thread(ps);
-        //    thread.Start(99);
+        //    thread.Start("Eu sou o parâmetro para a thread!");
+        //    Console.ReadLine();
         //}
 
 
 
 
+        //Parâmetros com expressão lambda
         //static void Main(string[] args)
         //{
         //    Thread thread = new Thread((data) =>
         //    {
-        //        WorkOnData(data);
+        //        Executar(data);
         //    });
         //    thread.Start(99);
         //}
 
 
-        //static void Main(string[] args)
-        //{
-        //    Thread tickThread = new Thread(() =>
-        //    {
-        //        while (true)
-        //        {
-        //            Console.WriteLine("Tick");
-        //            Thread.Sleep(1000);
-        //        }
-        //    });
-        //    tickThread.Start();
-        //    Console.WriteLine("Press a key to stop the clock");
-        //    Console.ReadKey();
-        //    tickThread.Abort();
-        //    Console.WriteLine("Press a key to exit");
-        //    Console.ReadKey();
-        //}
+
+
+
 
 
 
@@ -181,20 +146,29 @@ namespace Program02
 
 
 
-        //static void DisplayThread(Thread t)
-        //{
-        //    Console.WriteLine("Name: {0}", t.Name);
-        //    Console.WriteLine("Culture: {0}", t.CurrentCulture);
-        //    Console.WriteLine("Priority: {0}", t.Priority);
-        //    Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
-        //    Console.WriteLine("IsBackground?: {0}", t.IsBackground);
-        //    Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
-        //}
-        //static void Main(string[] args)
-        //{
-        //    Thread.CurrentThread.Name = "Main method";
-        //    DisplayThread(Thread.CurrentThread);
-        //}
+        static void Main(string[] args)
+        {
+            Thread.CurrentThread.Name = "Main method";
+            Thread t1 = Thread.CurrentThread;
+            ExibeThread(t1);
+            Thread t2 = new Thread(() =>
+            {
+                Console.WriteLine("Olá, Mundo");
+            });
+            ExibeThread(t2);
+
+            Console.ReadLine();
+        }
+
+        private static void ExibeThread(Thread t)
+        {
+            Console.WriteLine("Name: {0}", t.Name);
+            Console.WriteLine("Culture: {0}", t.CurrentCulture);
+            Console.WriteLine("Priority: {0}", t.Priority);
+            Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
+            Console.WriteLine("IsBackground?: {0}", t.IsBackground);
+            Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
+        }
 
 
 
