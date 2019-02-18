@@ -1,4 +1,8 @@
-﻿namespace Program01._10
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Program01._10
 {
     class Program
     {
