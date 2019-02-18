@@ -1,5 +1,4 @@
-﻿//Gerar threads usando ThreadPool
-using System;
+﻿using System;
 using System.Threading;
 
 namespace Program02
@@ -7,18 +6,18 @@ namespace Program02
     class Program
     {
         //Criando uma Thread
-        //static void Ola()
-        //{
-        //    Console.WriteLine("Olá, eu sou uma thread!");
-        //    Thread.Sleep(2000);
-        //}
+        static void Main(string[] args)
+        {
+            Thread thread = new Thread(Ola);
+            thread.Start();
+            Console.ReadLine();
+        }
 
-        //static void Main(string[] args)
-        //{
-        //    Thread thread = new Thread(Ola);
-        //    thread.Start();
-        //}
-
+        static void Ola()
+        {
+            Console.WriteLine("Olá, eu sou uma thread!");
+            Thread.Sleep(2000);
+        }
 
 
 
@@ -146,29 +145,29 @@ namespace Program02
 
 
 
-        static void Main(string[] args)
-        {
-            Thread.CurrentThread.Name = "Main method";
-            Thread t1 = Thread.CurrentThread;
-            ExibeThread(t1);
-            Thread t2 = new Thread(() =>
-            {
-                Console.WriteLine("Olá, Mundo");
-            });
-            ExibeThread(t2);
+        //static void Main(string[] args)
+        //{
+        //    Thread.CurrentThread.Name = "Main method";
+        //    Thread t1 = Thread.CurrentThread;
+        //    ExibeThread(t1);
+        //    Thread t2 = new Thread(() =>
+        //    {
+        //        Console.WriteLine("Olá, Mundo");
+        //    });
+        //    ExibeThread(t2);
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
 
-        private static void ExibeThread(Thread t)
-        {
-            Console.WriteLine("Name: {0}", t.Name);
-            Console.WriteLine("Culture: {0}", t.CurrentCulture);
-            Console.WriteLine("Priority: {0}", t.Priority);
-            Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
-            Console.WriteLine("IsBackground?: {0}", t.IsBackground);
-            Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
-        }
+        //private static void ExibeThread(Thread t)
+        //{
+        //    Console.WriteLine("Name: {0}", t.Name);
+        //    Console.WriteLine("Culture: {0}", t.CurrentCulture);
+        //    Console.WriteLine("Priority: {0}", t.Priority);
+        //    Console.WriteLine("Contaxt: {0}", t.ExecutionContext);
+        //    Console.WriteLine("IsBackground?: {0}", t.IsBackground);
+        //    Console.WriteLine("IsPool?: {0}", t.IsThreadPoolThread);
+        //}
 
 
 
