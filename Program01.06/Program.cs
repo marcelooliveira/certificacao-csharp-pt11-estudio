@@ -11,6 +11,8 @@ namespace Program01._08
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("System.Diagnostics.Process.GetCurrentProcess().Threads: {0}", System.Diagnostics.Process.GetCurrentProcess().Threads.Count); ;
+
             Task[] Tarefas = new Task[10];
             for (int i = 0; i < 10; i++)
             {
@@ -21,6 +23,10 @@ namespace Program01._08
             }
 
             Task.WaitAll(Tarefas);
+
+            Console.WriteLine("System.Diagnostics.Process.GetCurrentProcess().Threads: {0}", System.Diagnostics.Process.GetCurrentProcess().Threads.Count); ;
+            Console.ReadLine();
+
             Console.WriteLine("Término do processamento. Tecle [ENTER] para terminar.");
             Console.ReadLine();
         }
