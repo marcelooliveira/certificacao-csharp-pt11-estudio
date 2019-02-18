@@ -30,7 +30,7 @@ namespace Program01._08
             Console.WriteLine("Tarefa {0} iniciando", i);
 
             Thread.Sleep(1000);
-            Console.WriteLine("Tarefa {0} terminada", 1);
+            Console.WriteLine("Tarefa {0} terminada", i);
         }
     }
 }
