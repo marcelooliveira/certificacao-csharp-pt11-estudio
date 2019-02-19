@@ -20,26 +20,17 @@ namespace Program03._01
         {
             InitializeComponent();
             relogio = new Stopwatch();
+            relogio.Start();
         }
 
         private void btnRelogio_Click(object sender, EventArgs e)
         {
-            IniciaRelogio();
+            TimeSpan tempo = relogio.Elapsed;
+            int minutos = tempo.Minutes;
+            int segundos = tempo.Seconds;
+            int milissegundos = tempo.Milliseconds;
+            txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
         }
 
-        private void IniciaRelogio()
-        {
-            btnRelogio.Enabled = false;
-            relogio.Restart();
-            while (true)
-            {
-                Thread.Sleep(100);
-                TimeSpan tempo = relogio.Elapsed;
-                int minutos = tempo.Minutes;
-                int segundos = tempo.Seconds;
-                int milissegundos = tempo.Milliseconds;
-                txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
-            }
-        }
     }
 }
