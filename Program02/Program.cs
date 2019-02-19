@@ -11,12 +11,13 @@ namespace Program02
 
             Thread thread1 = new Thread(Executar);
             thread1.Start();
+            thread1.Join();
 
             //2. Thread com expressão lambda
 
             Thread thread2 = new Thread(() => Executar());
             thread2.Start();
-
+            thread2.Join();
             //3. Passando parâmetro para thread
 
             ParameterizedThreadStart ps =
@@ -25,8 +26,26 @@ namespace Program02
 
             Thread thread3 = new Thread(ps);
             thread3.Start(123);
-
+            thread3.Join();
             //4. Interrompendo um relógio
+
+            bool relogioFuncionando = true;
+            Thread thread4 = new Thread(() => 
+            {
+                while (relogioFuncionando)
+                {
+                    Console.WriteLine("tic");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("tac");
+                    Thread.Sleep(1000);
+                }
+            });
+            thread4.Start();
+            
+            Console.WriteLine("Tecle algo para interromper.");
+            Console.ReadKey();
+            relogioFuncionando = false;
+            thread4.Join();
 
             //5. Sincronizando uma thread
 
