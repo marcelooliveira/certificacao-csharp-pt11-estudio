@@ -29,11 +29,14 @@ namespace Program04
 
         static void Main(string[] args)
         {
-            //TAREFA: Ler o conteúdo do arquivo de forma ASSÍNCRONA
+            //TAREFA 1: Executar o código
+            //TAREFA 2: Testar com nome de arquivo inexistente
+            //TAREFA 3: Ler o conteúdo do arquivo de forma ASSÍNCRONA
+            //TAREFA 4: Testar novamente com nome de arquivo inexistente
 
             try
             {
-                Executar();
+                Executar("filmes.json");
             }
             catch (Exception exc)
             {
@@ -43,17 +46,17 @@ namespace Program04
             Console.ReadLine();
         }
 
-        private static void Executar()
+        private static void Executar(string nomeArquivo)
         {
-            string json = LerArquivoJson();
+            string json = LerArquivoJson(nomeArquivo);
             IEnumerable<Filme> filmes =
                 JsonConvert.DeserializeObject<IEnumerable<Filme>>(json);
             GeraRelatorio(filmes);
         }
 
-        private static string LerArquivoJson()
+        private static string LerArquivoJson(string nomeArquivo)
         {
-            return File.ReadAllText("filmes.json");
+            return File.ReadAllText(nomeArquivo);
         }
 
         private static void GeraRelatorio(IEnumerable<Filme> filmes)
