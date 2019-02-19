@@ -24,6 +24,11 @@ namespace Program03._01
 
         private void btnRelogio_Click(object sender, EventArgs e)
         {
+            IniciaRelogio();
+        }
+
+        private void IniciaRelogio()
+        {
             btnRelogio.Enabled = false;
             relogio.Restart();
             while (true)
@@ -36,6 +41,5 @@ namespace Program03._01
                 txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
             }
         }
-
     }
 }
