@@ -45,13 +45,13 @@ namespace Program04
 
         private static void Executar()
         {
-            string json = LerArquivoJsonAsync();
+            string json = LerArquivoJson();
             IEnumerable<Filme> filmes =
                 JsonConvert.DeserializeObject<IEnumerable<Filme>>(json);
             GeraRelatorio(filmes);
         }
 
-        private static string LerArquivoJsonAsync()
+        private static string LerArquivoJson()
         {
             return File.ReadAllText("filmes.json");
         }
