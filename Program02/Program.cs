@@ -30,7 +30,7 @@ namespace Program02
                 ExecutarComParametro(p));
 
             Thread thread3 = new Thread(ps);
-            thread3.Name = "2. Thread com expressão lambda";
+            thread3.Name = "3. Passando parâmetro para thread";
             thread3.Start(123);
             thread3.Join();
             //4. Interrompendo um relógio
