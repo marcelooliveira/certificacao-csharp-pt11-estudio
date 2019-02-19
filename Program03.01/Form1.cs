@@ -23,15 +23,15 @@ namespace Program03._01
             relogio.Start();
         }
 
-        private void btnRelogio_Click(object sender, EventArgs e)
+        private async void btnRelogio_Click(object sender, EventArgs e)
         {
-            VisualizaRelogio();
+            await VisualizaRelogio3();
         }
 
         private void VisualizaRelogio()
         {
             Thread threadSecundaria =
-                new Thread(() => 
+                new Thread(() =>
                 {
                     while (true)
                     {
@@ -41,7 +41,7 @@ namespace Program03._01
                         int segundos = tempo.Seconds;
                         int milissegundos = tempo.Milliseconds;
 
-                        this.Invoke((Action)delegate 
+                        this.Invoke((Action)delegate
                         {
                             txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
                         });
@@ -49,6 +49,42 @@ namespace Program03._01
                     }
                 });
             threadSecundaria.Start();
+        }
+
+        void VisualizaRelogio2()
+        {
+            Task taskSecundaria =
+            new Task(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(100);
+                    TimeSpan tempo = relogio.Elapsed;
+                    int minutos = tempo.Minutes;
+                    int segundos = tempo.Seconds;
+                    int milissegundos = tempo.Milliseconds;
+
+                    this.Invoke((Action)delegate
+                    {
+                        txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
+                    });
+                    //this.Refresh();
+                }
+            });
+            taskSecundaria.Start();
+        }
+
+        async Task VisualizaRelogio3()
+        {
+            while (true)
+            {
+                await Task.Delay(100);
+                TimeSpan tempo = relogio.Elapsed;
+                int minutos = tempo.Minutes;
+                int segundos = tempo.Seconds;
+                int milissegundos = tempo.Milliseconds;
+                txtRelogio.Text = $"{minutos:00}:{segundos:00}:{milissegundos:000}";
+            }
         }
     }
 }
