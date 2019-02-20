@@ -12,9 +12,9 @@ namespace Program05_01
         static void Main()
         {
             int NUMERO_ITENS = 30;
-            int capacidadeInicial = 39;
 
-            Dictionary<int, int> dicionario = new Dictionary<int, int>(capacidadeInicial);
+            Dictionary<int, int> dicionario =
+                new Dictionary<int, int>();
 
             Console.WriteLine("Inicializando dicionário...");
             for (int i = 0; i < NUMERO_ITENS; i++)
@@ -35,7 +35,22 @@ namespace Program05_01
             });
             thread1.Start();
 
+            
+
+
+            Thread thread2 = new Thread(() =>
+            {
+                for (int i = 0; i < NUMERO_ITENS; i++)
+                {
+                    dicionario[i]++;
+                    Thread.Sleep(i);
+                }
+            });
+            thread2.Start();
+
             thread1.Join();
+            thread2.Join();
+
 
             ImprimirItens(dicionario);
 
