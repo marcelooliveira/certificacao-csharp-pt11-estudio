@@ -14,15 +14,29 @@ namespace Program06
 
         static void AdicionaFaixaDeValores(int inicial, int final)
         {
+            long subtotal = 0;
+
             while (inicial < final)
             {
-                lock (somaGeralObject)
-                {
-                    somaGeral = somaGeral + items[inicial];
-                }
-                
+                subtotal = subtotal + items[inicial];
                 inicial++;
             }
+
+            //lock (somaGeralObject)
+            //{
+            //    somaGeral = somaGeral + subtotal;
+            //}
+
+            Monitor.Enter(somaGeralObject);
+            try
+            {
+                somaGeral = somaGeral + subtotal;
+            }
+            finally
+            {
+                Monitor.Exit(somaGeralObject);
+            }
+
         }
 
         static void Main(string[] args)
