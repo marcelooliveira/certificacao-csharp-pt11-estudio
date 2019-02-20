@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "zzzItem06-Sincronizar recur
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item06-Implementar bloqueio", "Item06-Implementar bloqueio", "{C71405D6-90B5-4F01-ACED-A12848FFF0DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item08-Cancelar uma tarefa de execução longa", "Item08-Cancelar uma tarefa de execução longa", "{8FCD2554-7441-48B0-92B1-0CCAAEA3B4A2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item07-Cancelar uma tarefa de execução longa", "Item07-Cancelar uma tarefa de execução longa", "{8FCD2554-7441-48B0-92B1-0CCAAEA3B4A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item09-Implementar métodos thread-safe", "Item09-Implementar métodos thread-safe", "{7B68ACFB-0A03-4FD7-8929-64DF593DD3B2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item08-Implementar métodos thread-safe", "Item08-Implementar métodos thread-safe", "{7B68ACFB-0A03-4FD7-8929-64DF593DD3B2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program02", "Program02\Program02.csproj", "{C7823F84-446D-422C-81C8-760807BE0026}"
 EndProject
