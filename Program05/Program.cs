@@ -47,7 +47,7 @@ namespace Program05_01
         {
             for (int i = 0; i < cd.Count; i++)
             {
-                Console.WriteLine("cd[{0}] = {1}", i, cd[i]);
+                Console.WriteLine("dicionario[{0}] = {1}", i, cd[i]);
             }
         }
     }
