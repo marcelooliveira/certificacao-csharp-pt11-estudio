@@ -9,13 +9,18 @@ namespace Program06
     class Program
     {
         static long somaGeral;
+        static object somaGeralObject = new object();
         static int[] items = Enumerable.Range(0, 100001).ToArray();
 
         static void AdicionaFaixaDeValores(int inicial, int final)
         {
             while (inicial < final)
             {
-                somaGeral = somaGeral + items[inicial];
+                lock (somaGeralObject)
+                {
+                    somaGeral = somaGeral + items[inicial];
+                }
+                
                 inicial++;
             }
         }
