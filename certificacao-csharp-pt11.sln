@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item04-Usar palavras-chave 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item05-Gerenciar dados usando coleções simultâneas", "Item05-Gerenciar dados usando coleções simultâneas", "{8E61318F-0C64-4955-BA3D-96AC116C601D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item06-Sincronizar recursos", "Item06-Sincronizar recursos", "{7C436FDE-60B2-4B6E-8AB2-CC91B5C77D41}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "zzzItem06-Sincronizar recursos", "zzzItem06-Sincronizar recursos", "{7C436FDE-60B2-4B6E-8AB2-CC91B5C77D41}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item07-Implementar bloqueio", "Item07-Implementar bloqueio", "{C71405D6-90B5-4F01-ACED-A12848FFF0DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item06-Implementar bloqueio", "Item06-Implementar bloqueio", "{C71405D6-90B5-4F01-ACED-A12848FFF0DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item08-Cancelar uma tarefa de execução longa", "Item08-Cancelar uma tarefa de execução longa", "{8FCD2554-7441-48B0-92B1-0CCAAEA3B4A2}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program05.01", "Program05\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program06", "Program06\Program06.csproj", "{C1BCCC05-13A3-4412-8638-460020A26CC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program07", "Program07\Program07.csproj", "{EB745A3B-B195-4F3B-8499-A29EF896DB1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program06", "Program07\Program06.csproj", "{EB745A3B-B195-4F3B-8499-A29EF896DB1A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program08", "Program08\Program08.csproj", "{37FA8765-66FF-47F6-BBD3-04B5EEB21911}"
 EndProject
