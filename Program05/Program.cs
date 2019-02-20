@@ -11,24 +11,26 @@ namespace Program05_01
         static void Main(string[] args)
         {
             //Queue<int> colecao = new Queue<int>(5);
-            BlockingCollection<int> colecao = new BlockingCollection<int>(5);
+            //BlockingCollection<int> colecao = new BlockingCollection<int>(5);
+            ConcurrentQueue<int> colecao = new ConcurrentQueue<int>();
 
             var tarefa1 =
             Task.Run(() =>
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    //colecao.Enqueue(i);
-                    colecao.Add(i);
-                    Console.WriteLine("Item {0} adicionado com sucesso.", i);
+                    int item = i;
+                    colecao.Enqueue(item);
+                    //colecao.Add(i);
+                    Console.WriteLine("Item {0} adicionado com sucesso.", item);
                 }
 
                 //Sinaliza que a BlockingCollection
                 //não deve receber mais itens
-                colecao.CompleteAdding();
+                //colecao.CompleteAdding();
             });
 
-            Console.ReadKey();
+            //Console.ReadKey();
             Console.WriteLine("Lendo a coleção...");
 
             Task.Run(() =>
@@ -38,8 +40,8 @@ namespace Program05_01
                     for (int i = 0; i < 10; i++)
                     {
                         //Remove um item da BlockingCollection
-                        int v = colecao.Take();
-                        //int v = colecao.Dequeue();
+                        //int v = colecao.Take();
+                        colecao.TryDequeue(out int v);
                         Console.WriteLine("Item {0} removido com sucesso.", v);
                     }
                 }
