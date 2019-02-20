@@ -25,7 +25,7 @@ namespace Program05_01
 
             Console.WriteLine("Incrementando valores...");
 
-            Thread task1 = new Thread(() =>
+            Thread thread1 = new Thread(() =>
             {
                 for (int i = 0; i < NUMERO_ITENS; i++)
                 {
@@ -33,9 +33,9 @@ namespace Program05_01
                     Thread.Sleep(i);
                 }
             });
-            task1.Start();
+            thread1.Start();
 
-            task1.Join();
+            thread1.Join();
 
             ImprimirItens(dicionario);
 
