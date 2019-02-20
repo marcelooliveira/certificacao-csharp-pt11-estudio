@@ -9,16 +9,13 @@ namespace Program06
     class Program
     {
         static long somaGeral;
-        //static object somaGeralLock = new object();
         static int[] items = Enumerable.Range(0, 100001).ToArray();
-        static void adicionaFaixaDeValores(int inicial, int final)
+
+        static void AdicionaFaixaDeValores(int inicial, int final)
         {
             while (inicial < final)
             {
-                //lock (somaGeralLock)
-                //{
                 somaGeral = somaGeral + items[inicial];
-                //}
                 inicial++;
             }
         }
@@ -48,7 +45,7 @@ namespace Program06
                 // cria uma cópia local dos parâmetros
                 int i = inicioFaixa;
                 int f = fimFaixa;
-                tarefas.Add(Task.Run(() => adicionaFaixaDeValores(i, f)));
+                tarefas.Add(Task.Run(() => AdicionaFaixaDeValores(i, f)));
                 inicioFaixa = fimFaixa;
             }
             Task.WaitAll(tarefas.ToArray());
