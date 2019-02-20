@@ -35,22 +35,10 @@ namespace Program05_01
             });
             thread1.Start();
 
-            
 
 
-            Thread thread2 = new Thread(() =>
-            {
-                for (int i = 0; i < NUMERO_ITENS; i++)
-                {
-                    dicionario[i]++;
-                    Thread.Sleep(i);
-                }
-            });
-            thread2.Start();
 
             thread1.Join();
-            thread2.Join();
-
 
             ImprimirItens(dicionario);
 
