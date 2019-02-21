@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Program07
+namespace Program07_01
 {
     //Cancelar uma tarefa de execução longa
     class Program
@@ -23,10 +23,11 @@ namespace Program07
 
         static void Main(string[] args)
         {
-            Task.Run(() => Relogio());
+            Task relogio = Task.Run(() => Relogio());
             Console.WriteLine("Tecle algo para parar o relógio");
             Console.ReadKey();
             cancellationTokenSource.Cancel();
+            relogio.Wait();
             Console.WriteLine("O relógio parou.");
 
             Console.ReadLine();
