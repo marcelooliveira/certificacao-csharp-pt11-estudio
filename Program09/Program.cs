@@ -6,13 +6,18 @@ namespace Program08
     //Implementar métodos thread-safe
     class Program
     {
+        static object ContadorObject = new object();
+
         class Contador
         {
             public int Numero { get; private set; } = 0;
 
             public void Incrementar()
             {
-                Numero++;
+                lock (ContadorObject)
+                {
+                    Numero++;
+                }
             }
         }
 
@@ -24,7 +29,7 @@ namespace Program08
 
             Thread thread1 = new Thread(() =>
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     contador.Incrementar();
                     Thread.Sleep(i);
@@ -34,7 +39,7 @@ namespace Program08
 
             Thread thread2 = new Thread(() =>
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     contador.Incrementar();
                     Thread.Sleep(i);
