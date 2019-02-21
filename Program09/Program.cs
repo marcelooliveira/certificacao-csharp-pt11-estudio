@@ -6,21 +6,6 @@ namespace Program08
     //Implementar métodos thread-safe
     class Program
     {
-        static object ContadorObject = new object();
-
-        class Contador
-        {
-            public int Numero { get; private set; } = 0;
-
-            public void Incrementar()
-            {
-                lock (ContadorObject)
-                {
-                    Numero++;
-                }
-            }
-        }
-
         static void Main(string[] args)
         {
             var contador = new Contador();
@@ -53,6 +38,16 @@ namespace Program08
             Console.WriteLine("contador: {0}", contador.Numero);
 
             Console.ReadLine();
+        }
+
+        class Contador
+        {
+            public int Numero { get; private set; } = 0;
+
+            public void Incrementar()
+            {
+                Numero++;
+            }
         }
     }
 }
