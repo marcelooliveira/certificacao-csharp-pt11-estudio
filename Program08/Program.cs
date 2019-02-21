@@ -7,12 +7,9 @@ namespace Program07_01
     //Cancelar uma tarefa de execução longa
     class Program
     {
-        static CancellationTokenSource cancellationTokenSource =
-            new CancellationTokenSource();
-
         static void Relogio()
         {
-            while (!cancellationTokenSource.IsCancellationRequested)
+            while (true)
             {
                 Console.WriteLine("Tic");
                 Thread.Sleep(500);
@@ -23,13 +20,10 @@ namespace Program07_01
 
         static void Main(string[] args)
         {
-            Task relogio = Task.Run(() => Relogio());
             Console.WriteLine("Tecle algo para parar o relógio");
+            Task relogio = Task.Run(() => Relogio());
             Console.ReadKey();
-            cancellationTokenSource.Cancel();
-            relogio.Wait();
             Console.WriteLine("O relógio parou.");
-
             Console.ReadLine();
         }
     }
