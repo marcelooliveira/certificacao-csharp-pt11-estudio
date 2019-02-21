@@ -13,7 +13,8 @@ namespace Program07._02
         static void Main(string[] args)
         {
             Console.WriteLine("Tecle algo para parar o relógio");
-            Task relogio = Task.Run(() => Relogio());
+            Task relogio = new Task(() => Relogio(), cancellationTokenSource.Token);
+            relogio.Start();
             Console.ReadKey();
             Console.WriteLine("O relógio parou.");
             cancellationTokenSource.Cancel();
@@ -22,7 +23,7 @@ namespace Program07._02
 
         static void Relogio()
         {
-            while (!cancellationTokenSource.IsCancellationRequested)
+            while (true)
             {
                 Console.WriteLine("Tic");
                 Thread.Sleep(500);
