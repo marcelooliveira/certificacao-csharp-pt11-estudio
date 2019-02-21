@@ -7,6 +7,15 @@ namespace Program07_01
     //Cancelar uma tarefa de execução longa
     class Program
     {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Tecle algo para parar o relógio");
+            Task relogio = Task.Run(() => Relogio());
+            Console.ReadKey();
+            Console.WriteLine("O relógio parou.");
+            Console.ReadLine();
+        }
+
         static void Relogio()
         {
             while (true)
@@ -18,13 +27,5 @@ namespace Program07_01
             }
         }
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Tecle algo para parar o relógio");
-            Task relogio = Task.Run(() => Relogio());
-            Console.ReadKey();
-            Console.WriteLine("O relógio parou.");
-            Console.ReadLine();
-        }
     }
 }
