@@ -21,6 +21,7 @@ namespace Program08
                 }
             });
             thread1.Start();
+            thread1.Join();
 
             Thread thread2 = new Thread(() =>
             {
@@ -32,7 +33,6 @@ namespace Program08
             });
             thread2.Start();
 
-            thread1.Join();
             thread2.Join();
 
             Console.WriteLine("contador: {0}", contador.Numero);
