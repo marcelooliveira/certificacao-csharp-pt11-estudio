@@ -13,22 +13,23 @@ namespace Program07._02
         static void Main(string[] args)
         {
             Console.WriteLine("Tecle algo para parar o relógio");
-            Task relogio = new Task(() => Relogio(), cancellationTokenSource.Token);
-            relogio.Start();
+            Task contagem = new Task(() => ContagemRegressiva());
+            contagem.Start();
             Console.ReadKey();
-            Console.WriteLine("O relógio parou.");
+            Console.WriteLine("A contagem foi completada.");
             cancellationTokenSource.Cancel();
             Console.ReadLine();
         }
 
-        static void Relogio()
+        static void ContagemRegressiva()
         {
-            while (true)
+            int contador = 7;
+            while (!cancellationTokenSource.IsCancellationRequested
+                && contador > 0)
             {
-                Console.WriteLine("Tic");
+                Console.WriteLine("contador: {0}", contador);
                 Thread.Sleep(500);
-                Console.WriteLine("Tac");
-                Thread.Sleep(500);
+                contador--;
             }
         }
 
