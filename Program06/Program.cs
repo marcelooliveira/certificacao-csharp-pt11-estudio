@@ -1,62 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Program06
 {
     class Program
     {
-        //// make an array that holds the values 0 to 50000000
-        //static int[] items = Enumerable.Range(0, 50000001).ToArray();
-        //static void Main(string[] args)
-        //{
-        //    long total = 0;
-        //    for (int i = 0; i < items.Length; i++)
-        //        total = total + items[i];
-        //    Console.WriteLine("The total is: {0}", total);
-        //    Console.ReadKey();
-        //    Console.ReadLine();
-        //}
+        static long somaGeral;
+        static object somaGeralObject = new object();
+        static int[] items = Enumerable.Range(0, 100001).ToArray();
 
-
-
-
-
-        static long sharedTotal;
-        // make an array that holds the values 0 to 5000000
-        static int[] items = Enumerable.Range(0, 500001).ToArray();
-        static void addRangeOfValues(int start, int end)
+        static void AdicionaFaixaDeValores(int inicial, int final)
         {
-            while (start < end)
+            long subtotal = 0;
+
+            while (inicial < final)
             {
-                sharedTotal = sharedTotal + items[start];
-                start++;
+                subtotal = subtotal + items[inicial];
+                inicial++;
             }
+
+            //lock (somaGeralObject)
+            //{
+            //    somaGeral = somaGeral + subtotal;
+            //}
+
+            Monitor.Enter(somaGeralObject);
+            try
+            {
+                somaGeral = somaGeral + subtotal;
+            }
+            finally
+            {
+                Monitor.Exit(somaGeralObject);
+            }
+
         }
 
         static void Main(string[] args)
         {
-            List<Task> tasks = new List<Task>();
-            int rangeSize = 1000;
-            int rangeStart = 0;
-
-
-            while (rangeStart < items.Length)
+            while (true)
             {
-                int rangeEnd = rangeStart + rangeSize;
-                if (rangeEnd > items.Length)
-                    rangeEnd = items.Length;
-
-                // create local copies of the parameters
-                int rs = rangeStart;
-                int re = rangeEnd;
-                tasks.Add(Task.Run(() => addRangeOfValues(rs, re)));
-                rangeStart = rangeEnd;
+                Executar();
+                Thread.Sleep(1000);
             }
-            Task.WaitAll(tasks.ToArray());
-            Console.WriteLine("The total is: {0}", sharedTotal);
-            Console.ReadKey();
+        }
+
+        static void Executar()
+        {
+            somaGeral = 0;
+            List<Task> tarefas = new List<Task>();
+            int tamanhoFaixa = 1000;
+            int inicioFaixa = 0;
+
+            while (inicioFaixa < items.Length)
+            {
+                int fimFaixa = inicioFaixa + tamanhoFaixa;
+                if (fimFaixa > items.Length)
+                    fimFaixa = items.Length;
+
+                // cria uma cópia local dos parâmetros
+                int i = inicioFaixa;
+                int f = fimFaixa;
+                tarefas.Add(Task.Run(() => AdicionaFaixaDeValores(i, f)));
+                inicioFaixa = fimFaixa;
+            }
+            Task.WaitAll(tarefas.ToArray());
+            Console.WriteLine("A soma geral é: {0}", somaGeral);
         }
     }
 }

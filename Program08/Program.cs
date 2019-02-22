@@ -1,35 +1,58 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace Program07_01
+namespace Program08
 {
-    //Cancelar uma tarefa de execução longa
+    //Implementar métodos thread-safe
     class Program
     {
-        static CancellationTokenSource cancellationTokenSource
-            = new CancellationTokenSource();
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Tecle algo para parar o relógio");
-            Task relogio = Task.Run(() => Relogio());
-            Console.ReadKey();
-            Console.WriteLine("O relógio parou.");
-            cancellationTokenSource.Cancel();
+            var contador = new Contador();
+
+            Console.WriteLine("contador: {0}", contador.Numero);
+
+            Thread thread1 = new Thread(() =>
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    contador.Incrementar();
+                    Thread.Sleep(i);
+                }
+            });
+            thread1.Start();
+            //thread1.Join();
+
+            Thread thread2 = new Thread(() =>
+            {
+                for (int i = 0; i < 50; i++)
+                {
+                    contador.Incrementar();
+                    Thread.Sleep(i);
+                }
+            });
+            thread2.Start();
+
+            thread1.Join();
+            thread2.Join();
+
+            Console.WriteLine("contador: {0}", contador.Numero);
+
             Console.ReadLine();
         }
 
-        static void Relogio()
+        static object ContadorObject = new object();
+        class Contador
         {
-            while (!cancellationTokenSource.IsCancellationRequested)
+            public int Numero { get; private set; } = 0;
+
+            public void Incrementar()
             {
-                Console.WriteLine("Tic");
-                Thread.Sleep(500);
-                Console.WriteLine("Tac");
-                Thread.Sleep(500);
+                lock(ContadorObject)
+                {
+                    Numero++;
+                }
             }
         }
-
     }
 }
